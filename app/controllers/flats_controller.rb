@@ -9,7 +9,9 @@ class FlatsController < ApplicationController
     @markers = @flats.map do |flat|
       {
         lat: flat.latitude,
-        lng: flat.longitude
+        lng: flat.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { flat: flat })
+        # show info on map marker after clicked
       }
     end
   end
